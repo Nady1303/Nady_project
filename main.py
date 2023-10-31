@@ -1,8 +1,9 @@
 import io
 import random
+import sqlite3
 import sys
 from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
 
 t = '''<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
@@ -480,57 +481,8 @@ template1 = """<?xml version="1.0" encoding="UTF-8"?>
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_6">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>90</y>
-        <width>231</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QTableWidget" name="tableWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>380</x>
-        <y>90</y>
-        <width>231</width>
-        <height>192</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>30</y>
-        <width>121</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Смотрел&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>30</y>
-        <width>131</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Буду смотреть&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
+    
+     
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
@@ -786,6 +738,11 @@ background-color: rgb(170, 170, 255);
 """
 
 color = 1
+write = ''
+correct = False
+name = ''
+k = 0
+n = 0
 
 
 class Type1Error(Exception):
@@ -870,6 +827,7 @@ class Notebook1(Notebook2):
         super().__init__()
         f1 = io.StringIO(template1)
         uic.loadUi(f1, self)
+        self.bd_name = "noname.bd"
         global color
         self.color1 = (170, 200, 255)
         self.color2 = (170, 170, 255)
@@ -912,9 +870,6 @@ class Notebook1(Notebook2):
         self.pushButton_4.setStyleSheet(f"background-color: rgb{self.color2}")
         self.cub_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.coin_but.setStyleSheet(f"background-color: rgb{self.color2}")
-        self.label_6.setStyleSheet(f"background-color: rgb{self.color2}")
-        self.label_7.setStyleSheet(f"background-color: rgb{self.color2}")
-        self.pushButton_5.setStyleSheet(f"background-color: rgb{self.color2}")
         self.rules_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.itog_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_7.setStyleSheet(f"background-color: rgb{self.color2}")
@@ -924,13 +879,19 @@ class Notebook1(Notebook2):
         self.tabWidget.setTabText(2, 'Элемент списка')
         self.tabWidget.setTabText(3, 'Будущее')
         self.tabWidget.setTabText(4, 'Выбор')
-        self.tabWidget.setTabText(5, 'Что посмотреть')
-        self.tabWidget.setTabText(6, 'Угадай чило')
+        self.tabWidget.setTabText(5, 'Угадай чиcло')
         self.n1, self.n2 = 'от', 'до'
         self.diap.clicked.connect(self.run1)
         self.label_1.setText('  ОТ ')
         self.label_2.setText('  ДО ')
         self.pushButton.clicked.connect(self.r)
+        self.spinBox.setMaximum(9)
+        self.spinBox_2.setMaximum(9)
+        self.spinBox_3.setMaximum(9)
+        self.spinBox_4.setMaximum(9)
+        self.pushButton_6.clicked.connect(self.run6)
+        self.pushButton_7.clicked.connect(self.run7)
+        self.rules_but.clicked.connect(self.rules)
 
     def run1(self):
         self.n1, ok_pressed1 = QInputDialog.getText(self, "Введите число", "От:")
@@ -990,6 +951,88 @@ class Notebook1(Notebook2):
             self.label.setStyleSheet(
                 "background-color: rgb(233, 131, 131)")
             self.label.setText('       Поменяйте числа\n    диапазона')
+
+    def run6(self):
+        global name
+        global n
+        fun, ok_pressed = QInputDialog.getItem(
+            self, "Выберите", "Что вы хотите сделать?",
+            ("Начать игру", "Сбросить текущую игру"), 1, False)
+        if ok_pressed and fun == "Начать игру":
+            name, ok_pressed = QInputDialog.getText(
+                self, "Впишите", "Как Вас зовут?", False)
+            while name == '':
+                name, ok_pressed = QInputDialog.getText(
+                    self, "Впишите", "Как Вас зовут?", False)
+            n = random.randrange(1000, 9999)
+        if ok_pressed and fun == "Сбросить текущую игру":
+            n = 0
+
+        print(n)
+
+    def run7(self):
+        global k
+        global write
+        global n
+        ans1 = str(self.spinBox.value())
+        ans2 = str(self.spinBox_2.value())
+        ans3 = str(self.spinBox_3.value())
+        ans4 = str(self.spinBox_4.value())
+        ans = int(ans1 + ans2 + ans3 + ans4)
+        print(n, ans)
+        try:
+            if n == 0:
+                raise Exception
+            if n == ans:
+                correct = True
+            if n > ans:
+                correct = False
+                write = 'Загаданное число >'
+            if n < ans:
+                correct = False
+                write = 'Загаданное число <'
+
+            if correct:
+                msg = QMessageBox()
+                msg.setWindowTitle("Результат")
+                print("insert000")
+                msg.setText(f"Вы победили! Количество попыток: {k}")
+                x = msg.exec_()
+                con = sqlite3.connect(self.bd_name)
+                cur = con.cursor()
+                cur.execute(f'''INSERT INTO itog(name) VALUES("{name}")''')
+                print("insert")
+                cur.execute(f'''INSERT INTO itog(cout) VALUES("{k}")''')
+                con.commit()
+                con.close()
+
+                n = 0
+                k = 0
+            else:
+                k += 1
+                if write == 'Загаданное число >':
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Результат")
+                    msg.setText(f"Попробуйте ещё раз! Загаданное число > вашего числа")
+                    x = msg.exec_()
+                if write == 'Загаданное число <':
+                    msg = QMessageBox()
+                    msg.setWindowTitle("Результат")
+                    msg.setText(f"Попробуйте ещё раз! Загаданное число < вашего числа")
+                    x = msg.exec_()
+
+        except Exception as e:
+            print(e)
+            msg = QMessageBox()
+            msg.setWindowTitle("Результат")
+            msg.setText(f"Ошибка! Возможно вы не начали игру")
+            x = msg.exec_()
+
+    def rules(self):
+        msg = QMessageBox()
+        msg.setWindowTitle("Правила")
+        msg.setText(f"Загадано четырёхзначное число.\n Ваша задача угадать число. Вaм будут даны подсказки '>' '<'")
+        x = msg.exec_()
 
 
 if __name__ == '__main__':
