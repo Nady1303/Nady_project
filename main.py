@@ -1,7 +1,6 @@
 import io
 import random
 import sys
-
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog
 
@@ -79,46 +78,9 @@ template1 = """<?xml version="1.0" encoding="UTF-8"?>
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>554</height>
+    <width>760</width>
+    <height>567</height>
    </rect>
-  </property>
-  <property name="palette">
-   <palette>
-    <active>
-     <colorrole role="WindowText">
-      <brush brushstyle="SolidPattern">
-       <color alpha="255">
-        <red>200</red>
-        <green>105</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
-    </active>
-    <inactive>
-     <colorrole role="WindowText">
-      <brush brushstyle="SolidPattern">
-       <color alpha="255">
-        <red>200</red>
-        <green>105</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
-    </inactive>
-    <disabled>
-     <colorrole role="WindowText">
-      <brush brushstyle="SolidPattern">
-       <color alpha="255">
-        <red>120</red>
-        <green>120</green>
-        <blue>120</blue>
-       </color>
-      </brush>
-     </colorrole>
-    </disabled>
-   </palette>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -127,489 +89,347 @@ template1 = """<?xml version="1.0" encoding="UTF-8"?>
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>541</width>
-      <height>281</height>
+      <x>20</x>
+      <y>50</y>
+      <width>691</width>
+      <height>441</height>
      </rect>
     </property>
-    <property name="palette">
-     <palette>
-      <active>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>0</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Highlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>210</red>
-          <green>255</green>
-          <blue>224</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="LinkVisited">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>121</green>
-          <blue>208</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </active>
-      <inactive>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>0</green>
-          <blue>127</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Highlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>210</red>
-          <green>255</green>
-          <blue>224</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="LinkVisited">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>121</green>
-          <blue>208</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </inactive>
-      <disabled>
-       <colorrole role="WindowText">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>120</red>
-          <green>120</green>
-          <blue>120</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Button">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Base">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Window">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>170</red>
-          <green>170</green>
-          <blue>255</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="Highlight">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>210</red>
-          <green>255</green>
-          <blue>224</blue>
-         </color>
-        </brush>
-       </colorrole>
-       <colorrole role="LinkVisited">
-        <brush brushstyle="SolidPattern">
-         <color alpha="255">
-          <red>255</red>
-          <green>121</green>
-          <blue>208</blue>
-         </color>
-        </brush>
-       </colorrole>
-      </disabled>
-     </palette>
-    </property>
-    
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
-    <property name="elideMode">
-     <enum>Qt::ElideLeft</enum>
-    </property>
-    <widget class="QWidget" name="tabWidgetPage1" native="true">
+    <widget class="QWidget" name="tab_1">
      <attribute name="title">
-      <string>Число</string>
+      <string>Tab 1</string>
      </attribute>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>90</y>
-        <width>101</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton{
-	
-	;
-	background-color: rgb(170, 255, 255);
-}</string>
-      </property>
-      <property name="text">
-       <string>Получить
-число</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="diap">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>30</y>
-        <width>101</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>Выбрать диапазон</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
         <x>30</x>
-        <y>90</y>
-        <width>101</width>
+        <y>40</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aaffff;&quot;&gt;от&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>Введите диапазон</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="label_1">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>150</y>
-        <width>101</width>
-        <height>31</height>
+        <y>110</y>
+        <width>141</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#aaffff;&quot;&gt;до&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>  ОТ</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>240</y>
+        <width>141</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ДО&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>110</y>
+        <width>131</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Получить 
+число</string>
       </property>
      </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>380</x>
-        <y>90</y>
-        <width>111</width>
-        <height>61</height>
+        <x>490</x>
+        <y>100</y>
+        <width>121</width>
+        <height>131</height>
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; color:#aaffff;&quot;&gt;0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tabWidgetPage2" native="true">
+    <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>Слово</string>
+      <string>Страница</string>
      </attribute>
-     <widget class="QPushButton" name="nounBut">
+     <widget class="QPushButton" name="lang_but">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>30</y>
-        <width>131</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>Существительное</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_5">
-      <property name="geometry">
-       <rect>
-        <x>280</x>
-        <y>90</y>
-        <width>141</width>
+        <y>20</y>
+        <width>91</width>
         <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string/>
+       <string>Выбрать язык</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="verbBut">
+     <widget class="QPushButton" name="noun_but">
       <property name="geometry">
        <rect>
         <x>40</x>
         <y>80</y>
-        <width>131</width>
-        <height>31</height>
+        <width>141</width>
+        <height>51</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
-      </property>
       <property name="text">
-       <string>Глагол</string>
+       <string>Существительное </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="adjBut">
+     <widget class="QPushButton" name="verb_but">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>130</y>
-        <width>131</width>
-        <height>31</height>
+        <y>150</y>
+        <width>141</width>
+        <height>51</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
+      <property name="text">
+       <string>Глагол </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="adj_but">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>220</y>
+        <width>141</width>
+        <height>51</height>
+       </rect>
       </property>
       <property name="text">
        <string>Прилагательное</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="allBut">
+     <widget class="QPushButton" name="all_but">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>180</y>
-        <width>131</width>
-        <height>31</height>
+        <y>290</y>
+        <width>141</width>
+        <height>51</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
       </property>
       <property name="text">
        <string>Все</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabWidgetPage3" native="true">
-     <attribute name="title">
-      <string>Элемент списка</string>
-     </attribute>
-     <widget class="QTextEdit" name="elem">
+     <widget class="QPushButton" name="translate_but">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>40</y>
-        <width>161</width>
-        <height>31</height>
+        <x>420</x>
+        <y>160</y>
+        <width>151</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
+      <property name="text">
+       <string>Перевести слово</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="addBut">
+     <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>90</y>
-        <width>141</width>
+        <x>400</x>
+        <y>60</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>250</y>
+        <width>181</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Tab 2</string>
+     </attribute>
+     <widget class="QLabel" name="element">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>181</width>
         <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_but">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>110</y>
+        <width>171</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Добавить элемент</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="delBut">
+     <widget class="QPushButton" name="del_but">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>140</y>
-        <width>141</width>
-        <height>41</height>
+        <x>30</x>
+        <y>190</y>
+        <width>171</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Удалить элемент</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="one_elem">
+     <widget class="QPushButton" name="clear_but">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>40</y>
-        <width>101</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>Выбрать 
-один элемент</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="clearBut">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>190</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Очистить</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="two_elem">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>40</y>
-        <width>101</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(170, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>Выбрать
- два элемента</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="elem_res">
-      <property name="geometry">
-       <rect>
-        <x>290</x>
-        <y>120</y>
-        <width>161</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Кости</string>
-     </attribute>
-     <widget class="QPushButton" name="cubBut">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>20</y>
+        <x>30</x>
+        <y>270</y>
         <width>171</width>
         <height>51</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 255, 255);</string>
+      <property name="text">
+       <string>Заново</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>40</y>
+        <width>211</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Выбрать элемент</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="choice">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>170</y>
+        <width>201</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Страница</string>
+     </attribute>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>60</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Предсказание</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>60</y>
+        <width>201</width>
+        <height>71</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Совет</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>210</y>
+        <width>441</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Предсказание или совет&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Страница</string>
+     </attribute>
+     <widget class="QPushButton" name="cub_but">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>50</y>
+        <width>201</width>
+        <height>61</height>
+       </rect>
       </property>
       <property name="text">
        <string>Бросить кости</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="coinBut">
+     <widget class="QPushButton" name="coin_but">
       <property name="geometry">
        <rect>
-        <x>300</x>
-        <y>20</y>
-        <width>171</width>
-        <height>51</height>
+        <x>400</x>
+        <y>50</y>
+        <width>201</width>
+        <height>61</height>
        </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 255, 255);</string>
       </property>
       <property name="text">
        <string>Бросить монетку</string>
@@ -619,205 +439,206 @@ template1 = """<?xml version="1.0" encoding="UTF-8"?>
       <property name="geometry">
        <rect>
         <x>50</x>
-        <y>100</y>
-        <width>61</width>
-        <height>61</height>
+        <y>160</y>
+        <width>81</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 170, 255);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="cub2">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>160</y>
-        <width>61</width>
-        <height>61</height>
+        <x>150</x>
+        <y>250</y>
+        <width>81</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 85, 127);</string>
+       <string notr="true"/>
       </property>
       <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QLabel" name="coin">
       <property name="geometry">
        <rect>
-        <x>306</x>
-        <y>100</y>
-        <width>161</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabWidgetPage4" native="true">
-     <attribute name="title">
-      <string>Предсказание</string>
-     </attribute>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>100</y>
-        <width>461</width>
-        <height>111</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; color:#00ffff;&quot;&gt;Ваше предсказание&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>40</y>
-        <width>291</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>Получить предсказание</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>Игра</string>
-     </attribute>
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>461</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#55ffff;&quot;&gt;Было загадано четыре цифры (от 0 до 9)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#55ffff;&quot;&gt;Ваша задача: угадать числа. Ниже будут даны подсказки &amp;gt;, &amp;lt;, =&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_1">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>110</y>
-        <width>61</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_2">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>110</y>
-        <width>61</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_3">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>110</y>
-        <width>61</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_4">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>110</y>
-        <width>61</width>
-        <height>51</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num1">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>180</y>
-        <width>47</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <widget class="QLabel" name="num2">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>180</y>
-        <width>47</width>
-        <height>20</height>
+        <x>400</x>
+        <y>160</y>
+        <width>191</width>
+        <height>171</height>
        </rect>
       </property>
       <property name="text">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num3">
+    </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>Страница</string>
+     </attribute>
+     <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>180</y>
-        <width>47</width>
-        <height>20</height>
+        <x>30</x>
+        <y>90</y>
+        <width>231</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>90</y>
+        <width>231</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>30</y>
+        <width>121</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Смотрел&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QLabel" name="num4">
+     <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>180</y>
-        <width>47</width>
-        <height>20</height>
+        <x>420</x>
+        <y>30</y>
+        <width>131</width>
+        <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string/>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Буду смотреть&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="checkBut">
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>310</y>
+        <width>331</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ВЫБРАТЬ ФИЛЬМ</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_7">
+     <attribute name="title">
+      <string>Страница</string>
+     </attribute>
+     <widget class="QPushButton" name="rules_but">
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>220</y>
-        <width>451</width>
-        <height>23</height>
+        <y>30</y>
+        <width>191</width>
+        <height>61</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(85, 255, 255);</string>
+      <property name="text">
+       <string>ПРАВИЛА</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="itog_but">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>30</y>
+        <width>191</width>
+        <height>61</height>
+       </rect>
       </property>
       <property name="text">
-       <string>Проверить</string>
+       <string>ИСТОРИЯ</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>170</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_2">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>170</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_3">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>170</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinBox_4">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>170</y>
+        <width>81</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>340</y>
+        <width>441</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>НАЧАТЬ/СБРОСИТЬ</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>270</y>
+        <width>441</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ПРОВЕРИТЬ</string>
       </property>
      </widget>
     </widget>
@@ -828,22 +649,15 @@ template1 = """<?xml version="1.0" encoding="UTF-8"?>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>603</width>
+     <width>760</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <tabstops>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>pushButton</tabstop>
- </tabstops>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>
  """
 template2 = """<?xml version="1.0" encoding="UTF-8"?>
@@ -1057,41 +871,77 @@ class Notebook1(Notebook2):
         f1 = io.StringIO(template1)
         uic.loadUi(f1, self)
         global color
-
+        self.color1 = (170, 200, 255)
+        self.color2 = (170, 170, 255)
+        self.color3 = (170, 230, 255)
         if color == 1:
-            self.setStyleSheet("background-color: rgb(204, 255, 204)")
-            self.tabWidget.setStyleSheet("background-color: rgb(204, 255, 204)")
-            self.tabWidgetPage1.setStyleSheet("background-color: rgb(204, 255, 204)")
-            self.tab_3.setStyleSheet("background-color: rgb(204, 255, 204)")
+            self.color1 = (204, 255, 204)
+            self.color2 = (255, 153, 204)
+            self.color3 = (234, 255, 203)
         if color == 2:
-            self.setStyleSheet("background-color: rgb(255, 159, 172)")
-            self.tabWidget.setStyleSheet("background-color: rgb(255, 159, 172)")
-            self.tabWidgetPage1.setStyleSheet("background-color: rgb(255, 159, 172)")
-            self.tab_3.setStyleSheet("background-color: rgb(255, 159, 172)")
+            self.color1 = (255, 159, 172)
+            self.color2 = (255, 185, 135)
+            self.color3 = (255, 189, 183)
         if color == 3:
-            self.setStyleSheet("background-color: rgb(170, 200, 255)")
-            self.tabWidget.setStyleSheet("background-color: rgb(170, 200, 255)")
-            self.tabWidgetPage1.setStyleSheet("background-color: rgb(170, 200, 255)")
-            self.tab_3.setStyleSheet("background-color: rgb(170, 200, 255)")
+            self.color1 = (170, 200, 255)
+            self.color2 = (170, 170, 255)
         if color == 4:
-            self.setStyleSheet("background-color: rgb(255, 255, 153)")
-            self.tabWidget.setStyleSheet("background-color: rgb(255, 255, 153)")
-            self.tabWidgetPage1.setStyleSheet("background-color: rgb(255, 255, 153)")
-            self.tab_3.setStyleSheet("background-color: rgb(255, 255, 153)")
+            self.color1 = (255, 255, 153)
+            self.color2 = (255, 198, 85)
+            self.color3 = (255, 255, 183)
+        self.setStyleSheet(f"background-color: rgb{self.color3}")
+        self.tabWidget.setStyleSheet(f"background-color: rgb{self.color1}")
+        self.tab_1.setStyleSheet(f"background-color: rgb{self.color1}")
+        self.tab_7.setStyleSheet(f"background-color: rgb{self.color1}")
+        self.diap.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_1.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_2.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.lang_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.noun_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.verb_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.adj_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.all_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.translate_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.element.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.add_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.del_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.clear_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_2.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_3.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_4.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.cub_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.coin_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_6.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_7.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_5.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.rules_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.itog_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_7.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_6.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.tabWidget.setTabText(0, 'Число')
+        self.tabWidget.setTabText(1, 'Слово')
+        self.tabWidget.setTabText(2, 'Элемент списка')
+        self.tabWidget.setTabText(3, 'Будущее')
+        self.tabWidget.setTabText(4, 'Выбор')
+        self.tabWidget.setTabText(5, 'Что посмотреть')
+        self.tabWidget.setTabText(6, 'Угадай чило')
         self.n1, self.n2 = 'от', 'до'
         self.diap.clicked.connect(self.run1)
+        self.label_1.setText('  ОТ ')
+        self.label_2.setText('  ДО ')
         self.pushButton.clicked.connect(self.r)
 
     def run1(self):
         self.n1, ok_pressed1 = QInputDialog.getText(self, "Введите число", "От:")
         self.n2, ok_pressed2 = QInputDialog.getText(self, "Введите число", "До:")
         if ok_pressed1:
-            self.label_3.setText('oт ' + self.n1)
-            self.label_3.setStyleSheet(
+            self.label_1.setText('  ОТ ' + self.n1)
+            self.label_1.setStyleSheet(
                 "background-color: rgb(170, 200, 255)")
         if ok_pressed2:
-            self.label_4.setText('до ' + self.n2)
-            self.label_4.setStyleSheet(
+            self.label_2.setText('  ДО ' + self.n2)
+            self.label_2.setStyleSheet(
                 "background-color: rgb(170, 200, 255)")
 
     def r(self):
@@ -1109,9 +959,9 @@ class Notebook1(Notebook2):
             if int(self.n1) > int(self.n2):
                 raise Type5Error
             n = random.randrange(int(self.n1), int(self.n2) + 1)
-            self.label.setText(str(n))
+            self.label.setText('   ' + str(n))
             self.label.setStyleSheet(
-                "background-color: rgb(170, 200, 255)")
+                f"background-color: rgb{self.color2}")
         except Type1Error:
             self.label.setStyleSheet(
                 "background-color: rgb(233, 131, 131)")
@@ -1147,4 +997,3 @@ if __name__ == '__main__':
     ex = Notebook2()
     ex.show()
     sys.exit(app.exec_())
-
