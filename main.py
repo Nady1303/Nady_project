@@ -5,745 +5,35 @@ import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
 
-t = '''<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>755</width>
-    <height>502</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>70</x>
-      <y>20</y>
-      <width>471</width>
-      <height>371</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>3</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Tab 1</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>755</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <resources/>
- <connections/>
-</ui>
-'''
-template1 = """<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>760</width>
-    <height>567</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>50</y>
-      <width>691</width>
-      <height>441</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab_1">
-     <attribute name="title">
-      <string>Tab 1</string>
-     </attribute>
-     <widget class="QPushButton" name="diap">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>121</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Введите диапазон</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_1">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>110</y>
-        <width>141</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>  ОТ</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>240</y>
-        <width>141</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ДО&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>270</x>
-        <y>110</y>
-        <width>131</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Получить 
-число</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>100</y>
-        <width>121</width>
-        <height>131</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-     <widget class="QPushButton" name="lang_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>91</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Выбрать язык</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="noun_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>80</y>
-        <width>141</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Существительное </string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="verb_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>150</y>
-        <width>141</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Глагол </string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="adj_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>220</y>
-        <width>141</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Прилагательное</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="all_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>290</y>
-        <width>141</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Все</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="translate_but">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>160</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Перевести слово</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>60</y>
-        <width>181</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>250</y>
-        <width>181</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>Tab 2</string>
-     </attribute>
-     <widget class="QLabel" name="element">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>181</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="add_but">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>110</y>
-        <width>171</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Добавить элемент</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="del_but">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>190</y>
-        <width>171</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Удалить элемент</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="clear_but">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>270</y>
-        <width>171</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Заново</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>40</y>
-        <width>211</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Выбрать элемент</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="choice">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>170</y>
-        <width>201</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>60</y>
-        <width>201</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Предсказание</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>60</y>
-        <width>201</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Совет</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_5">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>210</y>
-        <width>441</width>
-        <height>101</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Предсказание или совет&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_5">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-     <widget class="QPushButton" name="cub_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>50</y>
-        <width>201</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Бросить кости</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="coin_but">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>50</y>
-        <width>201</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Бросить монетку</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="cub1">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>160</y>
-        <width>81</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="cub2">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>250</y>
-        <width>81</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="coin">
-      <property name="geometry">
-       <rect>
-        <x>400</x>
-        <y>160</y>
-        <width>191</width>
-        <height>171</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    
-     
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="geometry">
-       <rect>
-        <x>150</x>
-        <y>310</y>
-        <width>331</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>ВЫБРАТЬ ФИЛЬМ</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_7">
-     <attribute name="title">
-      <string>Страница</string>
-     </attribute>
-     <widget class="QPushButton" name="rules_but">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>30</y>
-        <width>191</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>ПРАВИЛА</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="itog_but">
-      <property name="geometry">
-       <rect>
-        <x>410</x>
-        <y>30</y>
-        <width>191</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>ИСТОРИЯ</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>170</y>
-        <width>81</width>
-        <height>71</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_2">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>170</y>
-        <width>81</width>
-        <height>71</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_3">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>170</y>
-        <width>81</width>
-        <height>71</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="spinBox_4">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>170</y>
-        <width>81</width>
-        <height>71</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>340</y>
-        <width>441</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>НАЧАТЬ/СБРОСИТЬ</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>270</y>
-        <width>441</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>ПРОВЕРИТЬ</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>760</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <resources/>
- <connections/>
-</ui>
- """
-template2 = """<?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>559</width>
-    <height>384</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(85, 255, 255);</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QRadioButton" name="radioButton_1">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>50</y>
-      <width>171</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 255);
-</string>
-    </property>
-    <property name="text">
-     <string>Зелёный + розовый</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_2">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>120</y>
-      <width>171</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 255);
-</string>
-    </property>
-    <property name="text">
-     <string>Розовый + персиковый</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_3">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>190</y>
-      <width>171</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 255);
-</string>
-    </property>
-    <property name="text">
-     <string>Голубой + сиреневый</string>
-    </property>
-   </widget>
-   <widget class="QRadioButton" name="radioButton_4">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>260</y>
-      <width>171</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(85, 255, 0);
-background-color: rgb(170, 170, 255);
-</string>
-    </property>
-    <property name="text">
-     <string>Жёлтый + оранжевый</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="start_but">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>110</y>
-      <width>161</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 170, 255);
-;
-</string>
-    </property>
-    <property name="text">
-     <string>НАЧАТЬ</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>559</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
- </widget>
- <resources/>
- <connections/>
-</ui>
-
-"""
-
 color = 1
 write = ''
 correct = False
 name = ''
 k = 0
 n = 0
+f = open('noun.txt', encoding='utf8')
+noun = f.readlines()
+noun = [e.replace('\n', '') for e in noun]
+noun = [x for x in noun if x != '']
+noun[-1] = noun[-1][0:7]
+f.close()
+f = open('verb.txt', encoding='utf8')
+verb = f.readlines()
+verb = [e.split('\t')[1] for e in verb]
+verb = [e.replace('\n', '') for e in verb]
+verb = [x for x in verb if x != '']
+f.close()
+f = open('adj.txt', encoding='utf8')
+adj = f.readlines()
+adj = [e.split('\t')[1] for e in adj]
+adj = [e.replace('\n', '') for e in adj]
+adj = [x for x in adj if x != '']
+f.close()
+alll = noun + verb + adj
+s = ''
+language = ''
 
+elements = []
 
 class Type1Error(Exception):
     pass
@@ -769,11 +59,27 @@ class Type6Error(Exception):
     pass
 
 
+class NotSameError(Exception):
+    pass
+
+
+class ElementNotInError(Exception):
+    pass
+
+
+class EmptyError(Exception):
+    pass
+
+
+class LengError(Exception):
+    pass
+
+
 class Notebook2(QMainWindow):
     def __init__(self):
         super().__init__()
-        f = io.StringIO(template2)
-        uic.loadUi(f, self)
+        uic.loadUi("untitled1.ui", self)
+        self.setWindowTitle("Выберите оформление и нажмите 'НАЧАТЬ'")
         self.radioButton_1.clicked.connect(self.change)
         self.radioButton_2.clicked.connect(self.change)
         self.radioButton_3.clicked.connect(self.change)
@@ -822,12 +128,11 @@ class Notebook2(QMainWindow):
 
 
 class Notebook1(Notebook2):
-
     def __init__(self):
         super().__init__()
-        f1 = io.StringIO(template1)
-        uic.loadUi(f1, self)
+        uic.loadUi("untitled.ui", self)
         self.bd_name = "noname.bd"
+        self.setWindowTitle('Рандомайзер')
         global color
         self.color1 = (170, 200, 255)
         self.color2 = (170, 170, 255)
@@ -855,7 +160,6 @@ class Notebook1(Notebook2):
         self.label_1.setStyleSheet(f"background-color: rgb{self.color2}")
         self.label_2.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton.setStyleSheet(f"background-color: rgb{self.color2}")
-        self.lang_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.noun_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.verb_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.adj_but.setStyleSheet(f"background-color: rgb{self.color2}")
@@ -865,6 +169,8 @@ class Notebook1(Notebook2):
         self.add_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.del_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.clear_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_3.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_4.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_2.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_3.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_4.setStyleSheet(f"background-color: rgb{self.color2}")
@@ -892,6 +198,113 @@ class Notebook1(Notebook2):
         self.pushButton_6.clicked.connect(self.run6)
         self.pushButton_7.clicked.connect(self.run7)
         self.rules_but.clicked.connect(self.rules)
+        self.noun_but.clicked.connect(self.noun)
+        self.verb_but.clicked.connect(self.verb)
+        self.adj_but.clicked.connect(self.adj)
+        self.all_but.clicked.connect(self.alll)
+        self.translate_but.clicked.connect(self.translate)
+        self.add_but.clicked.connect(self.add)
+        self.del_but.clicked.connect(self.delete)
+        self.clear_but.clicked.connect(self.clear)
+        self.pushButton_2.clicked.connect(self.make_choice)
+        self.choice.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.pushButton_3.clicked.connect(self.predskaz)
+        # self.pushButton_4.clicked.connect(self.sovet)
+
+    def predskaz(self):
+        f = open('predskaz.txt', encoding='utf8')
+        pred = f.readlines()
+        pred = [e.replace('\n', '') for e in pred]
+        f.close()
+        pred1 = random.choice(pred)
+        self.label_5.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_5.setText(' ' + pred1)
+
+    # def sovet(self):
+    #     f = open('sovet.txt', encoding='utf8')
+    #     sov = f.readlines()
+    #     sov = [e.replace('\n', '') for e in sov]
+    #     f.close()
+    #     sov1 = random.choice(sov)
+    #     self.label_5.setStyleSheet(f"background-color: rgb{self.color2}")
+    #     self.label_5.setText(' ' + sov1)
+
+    def make_choice(self):
+        global elements
+        count, ok_pressed = QInputDialog.getItem(
+            self, "Выберите", "Сколько вам нужно выбрать элементов?",
+            ('1', '2', '3'), 1, False)
+        if ok_pressed:
+            try:
+                count = int(count)
+                if len(elements) == 0:
+                    raise EmptyError
+                if count == 1:
+                    el = random.choice(elements)
+                    self.choice.setText('\t' + el)
+                if count > len(elements):
+                    raise LengError
+                elif count == 2:
+                    elem = random.choices(elements, k=2)
+                    self.choice.setText('  1)' + elem[0] + '\n  2)' + elem[-1])
+                elif count == 3:
+                    elem = random.choices(elements, k=3)
+                    self.choice.setText('  1)' + elem[0] + '\n  2)' + elem[1] + '\n  3)' + elem[-1])
+            except EmptyError:
+                msg = QMessageBox()
+                msg.setWindowTitle("Ошибка")
+                msg.setText(f"Вы ещё не добавили ни одного элемента")
+                x = msg.exec_()
+            except LengError:
+                msg = QMessageBox()
+                msg.setWindowTitle("Ошибка")
+                msg.setText(f"С списке слишком мало элементов")
+                x = msg.exec_()
+
+    def add(self):
+        global elements
+        try:
+            if self.element.text() not in elements:
+                elements.append(self.element.text())
+            else:
+                raise NotSameError
+        except NotSameError:
+            msg = QMessageBox()
+            msg.setWindowTitle("Ошибка")
+            msg.setText(f"Элементы не должны повторяться")
+            x = msg.exec_()
+
+    def delete(self):
+        global elements
+        try:
+            if len(elements) == 0:
+                raise EmptyError
+            if self.element.text() not in elements:
+                raise ElementNotInError
+            else:
+                elements.remove(self.element.text())
+        except ElementNotInError:
+            msg = QMessageBox()
+            msg.setWindowTitle("Ошибка")
+            msg.setText(f"Такого элемента нет в списке")
+            x = msg.exec_()
+        except EmptyError:
+            msg = QMessageBox()
+            msg.setWindowTitle("Ошибка")
+            msg.setText(f"Вы ещё не добавили ни одного элемента")
+            x = msg.exec_()
+
+    def clear(self):
+        global elements
+        ok, ok_pressed = QInputDialog.getItem(
+            self, "Уверены?", "Вы уверены, что хотите очистить список?",
+            ("Да", "Нет"), 1, False)
+        if ok == "Да" and ok_pressed:
+            elements.clear()
+            msg = QMessageBox()
+            msg.setWindowTitle("Успешно")
+            msg.setText(f"Список был успешно очистен")
+            x = msg.exec_()
 
     def run1(self):
         self.n1, ok_pressed1 = QInputDialog.getText(self, "Введите число", "От:")
@@ -967,7 +380,6 @@ class Notebook1(Notebook2):
             n = random.randrange(1000, 9999)
         if ok_pressed and fun == "Сбросить текущую игру":
             n = 0
-
         print(n)
 
     def run7(self):
@@ -991,7 +403,6 @@ class Notebook1(Notebook2):
             if n < ans:
                 correct = False
                 write = 'Загаданное число <'
-
             if correct:
                 msg = QMessageBox()
                 msg.setWindowTitle("Результат")
@@ -1005,7 +416,6 @@ class Notebook1(Notebook2):
                 cur.execute(f'''INSERT INTO itog(cout) VALUES("{k}")''')
                 con.commit()
                 con.close()
-
                 n = 0
                 k = 0
             else:
@@ -1020,7 +430,6 @@ class Notebook1(Notebook2):
                     msg.setWindowTitle("Результат")
                     msg.setText(f"Попробуйте ещё раз! Загаданное число < вашего числа")
                     x = msg.exec_()
-
         except Exception as e:
             print(e)
             msg = QMessageBox()
@@ -1033,6 +442,78 @@ class Notebook1(Notebook2):
         msg.setWindowTitle("Правила")
         msg.setText(f"Загадано четырёхзначное число.\n Ваша задача угадать число. Вaм будут даны подсказки '>' '<'")
         x = msg.exec_()
+
+    # def lang(self):
+    #     global language
+    #     global translator1
+    #     global translator2
+    #     lang, ok_pressed = QInputDialog.getItem(self, "Выберите язык", "Какой язык вас интересует?",
+    #                                             ("Русский", "Английский"), 1,
+    #                                             False)
+    #     que, ok_pressed_2 = QInputDialog.getItem(self, "Выберите", "Перевести всю страницу?",
+    #                                              ("Да", "Нет"), 1,
+    #                                              False)
+    #     if ok_pressed:
+    #         if lang == "Русский":
+    #             language = ''
+    #             self.translate_but.setEnabled(False)
+    #         if lang == "Английский":
+    #             language = translator1
+    #             self.translate_but.setEnabled(True)
+    #     if ok_pressed_2 and ok_pressed:
+    #         if que == "Да":
+    #             if lang == "Русский":
+    #                 self.noun_but.setText("Существительное")
+    #                 self.verb_but.setText("Глагол")
+    #                 self.adj_but.setText("Прилагательное")
+    #                 self.all_but.setText("Все")
+    #                 self.translate_but.setText("Перевести")
+    #                 self.lang_but.setText("Выбрать язык")
+    #             if lang == "Английский":
+    #                 self.noun_but.setText("Noun")
+    #                 self.verb_but.setText("Verb")
+    #                 self.adj_but.setText("Adjective")
+    #                 self.all_but.setText("All")
+    #                 self.translate_but.setText("Translate")
+    #                 self.lang_but.setText("Choose language")
+
+    def noun(self):
+        global noun
+        global s
+        s = random.choice(noun)
+        s1 = s
+        self.label_3.setText('  ' + s1.lower())
+        self.label_4.setText('')
+
+    def verb(self):
+        global verb
+        global s
+        s = random.choice(verb)
+        s1 = s
+        self.label_3.setText('  ' + s1.lower())
+        self.label_4.setText('')
+
+    def adj(self):
+        global adj
+        global s
+        global language
+        s = random.choice(adj)
+        s1 = s
+        self.label_3.setText('  ' + s1.lower())
+        self.label_4.setText('')
+
+    def alll(self):
+        global alll
+        global s
+        global language
+        s = random.choice(alll)
+        s1 = s
+        self.label_3.setText('  ' + s1.lower())
+        self.label_4.setText('')
+
+    def translate(self):
+        global s
+        self.label_4.setText('  ' + s)
 
 
 if __name__ == '__main__':
