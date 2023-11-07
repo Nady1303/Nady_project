@@ -4,6 +4,8 @@ import sqlite3
 import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
+from translate import Translator
+from PyQt5.QtGui import QImage, QPixmap
 
 color = 1
 write = ''
@@ -32,8 +34,13 @@ f.close()
 alll = noun + verb + adj
 s = ''
 language = ''
+translator1 = Translator(from_lang="Russian", to_lang="English")
+translator2 = Translator(from_lang="Russian", to_lang="German")
+translator3 = Translator(from_lang="Russian", to_lang="French")
+elements = []
 
 elements = []
+
 
 class Type1Error(Exception):
     pass
@@ -209,7 +216,9 @@ class Notebook1(Notebook2):
         self.pushButton_2.clicked.connect(self.make_choice)
         self.choice.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_3.clicked.connect(self.predskaz)
-        # self.pushButton_4.clicked.connect(self.sovet)
+        self.pushButton_4.clicked.connect(self.sovet)
+        self.cub_but.clicked.connect(self.cub)
+
 
     def predskaz(self):
         f = open('predskaz.txt', encoding='utf8')
@@ -220,14 +229,19 @@ class Notebook1(Notebook2):
         self.label_5.setStyleSheet(f"background-color: rgb{self.color2}")
         self.label_5.setText(' ' + pred1)
 
-    # def sovet(self):
-    #     f = open('sovet.txt', encoding='utf8')
-    #     sov = f.readlines()
-    #     sov = [e.replace('\n', '') for e in sov]
-    #     f.close()
-    #     sov1 = random.choice(sov)
-    #     self.label_5.setStyleSheet(f"background-color: rgb{self.color2}")
-    #     self.label_5.setText(' ' + sov1)
+    def sovet(self):
+        f = open('sovet.txt', encoding='utf8')
+        sov = f.readlines()
+        sov = [e.replace('\n', '') for e in sov]
+        f.close()
+        sov1 = random.choice(sov)
+        self.label_5.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.label_5.setText(' ' + sov1)
+
+    def cub(self):
+        n1 = random.randrange(1, 7)
+        n2 = random.randrange(1, 7)
+        self.cub_1.set
 
     def make_choice(self):
         global elements
@@ -241,7 +255,7 @@ class Notebook1(Notebook2):
                     raise EmptyError
                 if count == 1:
                     el = random.choice(elements)
-                    self.choice.setText('\t' + el)
+                    self.choice.setText('  ' + el)
                 if count > len(elements):
                     raise LengError
                 elif count == 2:
@@ -258,7 +272,7 @@ class Notebook1(Notebook2):
             except LengError:
                 msg = QMessageBox()
                 msg.setWindowTitle("Ошибка")
-                msg.setText(f"С списке слишком мало элементов")
+                msg.setText(f"В списке слишком мало элементов")
                 x = msg.exec_()
 
     def add(self):
@@ -409,13 +423,16 @@ class Notebook1(Notebook2):
                 print("insert000")
                 msg.setText(f"Вы победили! Количество попыток: {k}")
                 x = msg.exec_()
-                con = sqlite3.connect(self.bd_name)
-                cur = con.cursor()
-                cur.execute(f'''INSERT INTO itog(name) VALUES("{name}")''')
-                print("insert")
-                cur.execute(f'''INSERT INTO itog(cout) VALUES("{k}")''')
-                con.commit()
-                con.close()
+                try:
+                    print(0)
+                    con = sqlite3.connect("noname.bd")
+                    cur = con.cursor()
+                    cur.execute(f'''INSERT INTO itog(name, cout) VALUES("{name}", "{k}")''')
+                    print("insert")
+                    con.commit()
+                    con.close()
+                except Exception as e:
+                    print(e)
                 n = 0
                 k = 0
             else:
@@ -442,40 +459,6 @@ class Notebook1(Notebook2):
         msg.setWindowTitle("Правила")
         msg.setText(f"Загадано четырёхзначное число.\n Ваша задача угадать число. Вaм будут даны подсказки '>' '<'")
         x = msg.exec_()
-
-    # def lang(self):
-    #     global language
-    #     global translator1
-    #     global translator2
-    #     lang, ok_pressed = QInputDialog.getItem(self, "Выберите язык", "Какой язык вас интересует?",
-    #                                             ("Русский", "Английский"), 1,
-    #                                             False)
-    #     que, ok_pressed_2 = QInputDialog.getItem(self, "Выберите", "Перевести всю страницу?",
-    #                                              ("Да", "Нет"), 1,
-    #                                              False)
-    #     if ok_pressed:
-    #         if lang == "Русский":
-    #             language = ''
-    #             self.translate_but.setEnabled(False)
-    #         if lang == "Английский":
-    #             language = translator1
-    #             self.translate_but.setEnabled(True)
-    #     if ok_pressed_2 and ok_pressed:
-    #         if que == "Да":
-    #             if lang == "Русский":
-    #                 self.noun_but.setText("Существительное")
-    #                 self.verb_but.setText("Глагол")
-    #                 self.adj_but.setText("Прилагательное")
-    #                 self.all_but.setText("Все")
-    #                 self.translate_but.setText("Перевести")
-    #                 self.lang_but.setText("Выбрать язык")
-    #             if lang == "Английский":
-    #                 self.noun_but.setText("Noun")
-    #                 self.verb_but.setText("Verb")
-    #                 self.adj_but.setText("Adjective")
-    #                 self.all_but.setText("All")
-    #                 self.translate_but.setText("Translate")
-    #                 self.lang_but.setText("Choose language")
 
     def noun(self):
         global noun
@@ -513,7 +496,52 @@ class Notebook1(Notebook2):
 
     def translate(self):
         global s
-        self.label_4.setText('  ' + s)
+        global translator3
+        global translator1
+        global translator2
+        lang, ok_pressed = QInputDialog.getItem(self, "Выберите язык", "Какой язык вас интересует?",
+                                                ("Английский", "Немецкий", "Французский", "Случайный выбор"), 1,
+                                                False)
+        if ok_pressed:
+            try:
+                if lang == "Английский":
+                    self.label_4.setText('')
+                    s1 = translator1.translate(s)
+                    if len(s1.split(' ')) > 2:
+                        s1 = ' '.join(s1.split(' ')[0:3])
+                    self.label_4.setText("  " + s1.lower())
+                if lang == "Немецкий":
+                    self.label_4.setText('')
+                    s1 = translator2.translate(s)
+                    if len(s1.split(' ')) > 2:
+                        s1 = ' '.join(s1.split(' ')[0:3])
+                    self.label_4.setText("  " + s1.lower())
+                if lang == "Французский":
+                    self.label_4.setText('')
+                    s1 = translator3.translate(s)
+                    if len(s1.split(' ')) > 2:
+                        s1 = ' '.join(s1.split(' ')[0:3])
+                    self.label_4.setText("  " + s1.lower())
+                if lang == "Случайный выбор":
+                    self.label_4.setText('')
+                    a = [1, 2, 3]
+                    translator = translator1
+                    l = "Английский"
+                    if random.choice(a) == 1:
+                        translator = translator1
+                        l = "Английский"
+                    if random.choice(a) == 2:
+                        translator = translator2
+                        l = "Немецкий"
+                    if random.choice(a) == 3:
+                        translator = translator3
+                        l = "Французский"
+                    s1 = translator.translate(s)
+                    if len(s1.split(' ')) > 2:
+                        s1 = ' '.join(s1.split(' ')[0:3])
+                    self.label_4.setText("  " + s1.lower() + '\n' + "  " + l)
+            except Exception:
+                self.label_4.setText("Произошли непредвиденные \n проблемы с переводом")
 
 
 if __name__ == '__main__':
