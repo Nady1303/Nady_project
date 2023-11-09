@@ -1,11 +1,9 @@
-import io
 import random
 import sqlite3
 import sys
-from PyQt5 import uic
+from PyQt5 import uic, QtCore
 from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
-from translate import Translator
-from PyQt5.QtGui import QImage, QPixmap
+from PyQt5.QtGui import QPixmap
 
 color = 1
 write = ''
@@ -33,12 +31,6 @@ adj = [x for x in adj if x != '']
 f.close()
 alll = noun + verb + adj
 s = ''
-language = ''
-translator1 = Translator(from_lang="Russian", to_lang="English")
-translator2 = Translator(from_lang="Russian", to_lang="German")
-translator3 = Translator(from_lang="Russian", to_lang="French")
-elements = []
-
 elements = []
 
 
@@ -171,13 +163,11 @@ class Notebook1(Notebook2):
         self.verb_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.adj_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.all_but.setStyleSheet(f"background-color: rgb{self.color2}")
-        self.translate_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.element.setStyleSheet(f"background-color: rgb{self.color2}")
         self.add_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.del_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.clear_but.setStyleSheet(f"background-color: rgb{self.color2}")
         self.label_3.setStyleSheet(f"background-color: rgb{self.color2}")
-        self.label_4.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_2.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_3.setStyleSheet(f"background-color: rgb{self.color2}")
         self.pushButton_4.setStyleSheet(f"background-color: rgb{self.color2}")
@@ -209,7 +199,6 @@ class Notebook1(Notebook2):
         self.verb_but.clicked.connect(self.verb)
         self.adj_but.clicked.connect(self.adj)
         self.all_but.clicked.connect(self.alll)
-        self.translate_but.clicked.connect(self.translate)
         self.add_but.clicked.connect(self.add)
         self.del_but.clicked.connect(self.delete)
         self.clear_but.clicked.connect(self.clear)
@@ -218,7 +207,13 @@ class Notebook1(Notebook2):
         self.pushButton_3.clicked.connect(self.predskaz)
         self.pushButton_4.clicked.connect(self.sovet)
         self.cub_but.clicked.connect(self.cub)
-
+        self.coin_but.clicked.connect(self.coin_run)
+        pixmap1 = QPixmap('cub_1.jpg').scaled(81, 81, QtCore.Qt.KeepAspectRatio)
+        pixmap2 = QPixmap('cub_6.jpg').scaled(81, 81, QtCore.Qt.KeepAspectRatio)
+        self.cub1.setPixmap(pixmap1)
+        self.cub2.setPixmap(pixmap2)
+        pixmap3 = QPixmap('reshka.png').scaled(191, 171, QtCore.Qt.KeepAspectRatio)
+        self.coin.setPixmap(pixmap3)
 
     def predskaz(self):
         f = open('predskaz.txt', encoding='utf8')
@@ -241,7 +236,44 @@ class Notebook1(Notebook2):
     def cub(self):
         n1 = random.randrange(1, 7)
         n2 = random.randrange(1, 7)
-        self.cub_1.set
+        p1 = p2 = 'cub_1.jpg'
+        if n1 == 1:
+            p1 = 'cub_1.jpg'
+        if n1 == 2:
+            p1 = 'cub_2.jpg'
+        if n1 == 3:
+            p1 = 'cub_3.jpg'
+        if n1 == 4:
+            p1 = 'cub_4.jpg'
+        if n1 == 5:
+            p1 = 'cub_5.jpg'
+        if n1 == 6:
+            p1 = 'cub_6.jpg'
+        if n2 == 1:
+            p2 = 'cub_1.jpg'
+        if n2 == 2:
+            p2 = 'cub_2.jpg'
+        if n2 == 3:
+            p2 = 'cub_3.jpg'
+        if n2 == 4:
+            p2 = 'cub_4.jpg'
+        if n2 == 5:
+            p2 = 'cub_5.jpg'
+        if n1 == 6:
+            p2 = 'cub_6.jpg'
+        pixmap1 = QPixmap(p1).scaled(81, 81, QtCore.Qt.KeepAspectRatio)
+        pixmap2 = QPixmap(p2).scaled(81, 81, QtCore.Qt.KeepAspectRatio)
+        self.cub1.setPixmap(pixmap1)
+        self.cub2.setPixmap(pixmap2)
+
+    def coin_run(self):
+        c = random.randrange(1, 3)
+        if c == 1:
+            pixmap3 = QPixmap('reshka.png').scaled(191, 171, QtCore.Qt.KeepAspectRatio)
+            self.coin.setPixmap(pixmap3)
+        if c == 2:
+            pixmap3 = QPixmap('orel.png').scaled(191, 171, QtCore.Qt.KeepAspectRatio)
+            self.coin.setPixmap(pixmap3)
 
     def make_choice(self):
         global elements
@@ -380,8 +412,7 @@ class Notebook1(Notebook2):
             self.label.setText('       Поменяйте числа\n    диапазона')
 
     def run6(self):
-        global name
-        global n
+        global name, n
         fun, ok_pressed = QInputDialog.getItem(
             self, "Выберите", "Что вы хотите сделать?",
             ("Начать игру", "Сбросить текущую игру"), 1, False)
@@ -397,9 +428,7 @@ class Notebook1(Notebook2):
         print(n)
 
     def run7(self):
-        global k
-        global write
-        global n
+        global k, write, n
         ans1 = str(self.spinBox.value())
         ans2 = str(self.spinBox_2.value())
         ans3 = str(self.spinBox_3.value())
@@ -461,87 +490,28 @@ class Notebook1(Notebook2):
         x = msg.exec_()
 
     def noun(self):
-        global noun
-        global s
+        global noun, s
         s = random.choice(noun)
         s1 = s
-        self.label_3.setText('  ' + s1.lower())
-        self.label_4.setText('')
+        self.label_3.setText('\t' + s1.lower())
 
     def verb(self):
-        global verb
-        global s
+        global verb, s
         s = random.choice(verb)
         s1 = s
-        self.label_3.setText('  ' + s1.lower())
-        self.label_4.setText('')
+        self.label_3.setText('\t' + s1.lower())
 
     def adj(self):
-        global adj
-        global s
-        global language
+        global adj, s
         s = random.choice(adj)
         s1 = s
-        self.label_3.setText('  ' + s1.lower())
-        self.label_4.setText('')
+        self.label_3.setText('\t' + s1.lower())
 
     def alll(self):
-        global alll
-        global s
-        global language
+        global alll, s
         s = random.choice(alll)
         s1 = s
-        self.label_3.setText('  ' + s1.lower())
-        self.label_4.setText('')
-
-    def translate(self):
-        global s
-        global translator3
-        global translator1
-        global translator2
-        lang, ok_pressed = QInputDialog.getItem(self, "Выберите язык", "Какой язык вас интересует?",
-                                                ("Английский", "Немецкий", "Французский", "Случайный выбор"), 1,
-                                                False)
-        if ok_pressed:
-            try:
-                if lang == "Английский":
-                    self.label_4.setText('')
-                    s1 = translator1.translate(s)
-                    if len(s1.split(' ')) > 2:
-                        s1 = ' '.join(s1.split(' ')[0:3])
-                    self.label_4.setText("  " + s1.lower())
-                if lang == "Немецкий":
-                    self.label_4.setText('')
-                    s1 = translator2.translate(s)
-                    if len(s1.split(' ')) > 2:
-                        s1 = ' '.join(s1.split(' ')[0:3])
-                    self.label_4.setText("  " + s1.lower())
-                if lang == "Французский":
-                    self.label_4.setText('')
-                    s1 = translator3.translate(s)
-                    if len(s1.split(' ')) > 2:
-                        s1 = ' '.join(s1.split(' ')[0:3])
-                    self.label_4.setText("  " + s1.lower())
-                if lang == "Случайный выбор":
-                    self.label_4.setText('')
-                    a = [1, 2, 3]
-                    translator = translator1
-                    l = "Английский"
-                    if random.choice(a) == 1:
-                        translator = translator1
-                        l = "Английский"
-                    if random.choice(a) == 2:
-                        translator = translator2
-                        l = "Немецкий"
-                    if random.choice(a) == 3:
-                        translator = translator3
-                        l = "Французский"
-                    s1 = translator.translate(s)
-                    if len(s1.split(' ')) > 2:
-                        s1 = ' '.join(s1.split(' ')[0:3])
-                    self.label_4.setText("  " + s1.lower() + '\n' + "  " + l)
-            except Exception:
-                self.label_4.setText("Произошли непредвиденные \n проблемы с переводом")
+        self.label_3.setText('\t' + s1.lower())
 
 
 if __name__ == '__main__':
