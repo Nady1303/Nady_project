@@ -153,37 +153,11 @@
        <string>Все</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="translate_but">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>160</y>
-        <width>151</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Перевести слово</string>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>60</y>
-        <width>181</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>390</x>
-        <y>250</y>
+        <x>350</x>
+        <y>180</y>
         <width>181</width>
         <height>71</height>
        </rect>

@@ -2,10 +2,10 @@ import random
 import sqlite3
 import sys
 from PyQt5 import uic, QtCore
-from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox
+from PyQt5.QtWidgets import QApplication, QMainWindow, QInputDialog, QMessageBox, QTableWidgetItem
 from PyQt5.QtGui import QPixmap
 
-color = 1
+color = 3
 write = ''
 correct = False
 name = ''
@@ -214,6 +214,11 @@ class Notebook1(Notebook2):
         self.cub2.setPixmap(pixmap2)
         pixmap3 = QPixmap('reshka.png').scaled(191, 171, QtCore.Qt.KeepAspectRatio)
         self.coin.setPixmap(pixmap3)
+        self.itog_but.clicked.connect(self.itog)
+
+    def itog(self):
+        self.itog_form = Itog_tab()
+        self.itog_form.show()
 
     def predskaz(self):
         f = open('predskaz.txt', encoding='utf8')
@@ -310,25 +315,34 @@ class Notebook1(Notebook2):
     def add(self):
         global elements
         try:
-            if self.element.text() not in elements:
-                elements.append(self.element.text())
+            elem = self.element.text()
+            elem = elem.rstrip()
+            elem = elem.lstrip()
+            if elem not in elements:
+                elements.append(elem)
             else:
                 raise NotSameError
+            print(elements)
         except NotSameError:
             msg = QMessageBox()
             msg.setWindowTitle("Ошибка")
             msg.setText(f"Элементы не должны повторяться")
             x = msg.exec_()
+        except Exception as e:
+            print(e)
 
     def delete(self):
         global elements
+        elem = self.element.text()
+        elem = elem.rstrip()
+        elem = elem.lstrip()
         try:
             if len(elements) == 0:
                 raise EmptyError
-            if self.element.text() not in elements:
+            if elem not in elements:
                 raise ElementNotInError
             else:
-                elements.remove(self.element.text())
+                elements.remove(elem)
         except ElementNotInError:
             msg = QMessageBox()
             msg.setWindowTitle("Ошибка")
@@ -512,6 +526,40 @@ class Notebook1(Notebook2):
         s = random.choice(alll)
         s1 = s
         self.label_3.setText('\t' + s1.lower())
+
+class Itog_tab(Notebook1):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi("untitled2.ui", self)
+        self.con = sqlite3.connect("noname.bd")
+        self.setWindowTitle('История')
+        global color
+        self.color1 = (170, 200, 255)
+        self.color2 = (170, 170, 255)
+        if color == 1:
+            self.color1 = (204, 255, 204)
+            self.color2 = (255, 153, 204)
+        if color == 2:
+            self.color1 = (255, 159, 172)
+            self.color2 = (255, 185, 135)
+        if color == 3:
+            self.color1 = (170, 200, 255)
+            self.color2 = (170, 170, 255)
+        if color == 4:
+            self.color1 = (255, 255, 153)
+            self.color2 = (255, 198, 85)
+        self.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.tableWidget.setStyleSheet(f"background-color: rgb{self.color1}")
+        cur = self.con.cursor()
+        que = "SELECT * FROM itog "
+        result = cur.execute(que).fetchall()
+        self.tableWidget.setRowCount(len(result))
+        self.tableWidget.setColumnCount(len(result[0]))
+        for i, elem in enumerate(result):
+            for j, val in enumerate(elem):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(val)))
+        self.tableWidget.verticalHeader().hide()
+        self.tableWidget.horizontalHeader().hide()
 
 
 if __name__ == '__main__':
