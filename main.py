@@ -78,6 +78,7 @@ class Notebook2(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("untitled1.ui", self)
+        self.setFixedSize(540, 400)
         self.setWindowTitle("Выберите оформление и нажмите 'НАЧАТЬ'")
         self.radioButton_1.clicked.connect(self.change)
         self.radioButton_2.clicked.connect(self.change)
@@ -90,36 +91,25 @@ class Notebook2(QMainWindow):
         global color
         if self.sender() == self.radioButton_1:
             color = 1
+            self.color2 = (255, 153, 204)
             self.setStyleSheet("QMainWindow { background-color: rgb(204, 255, 204)}")
-            self.start_but.setStyleSheet("background-color: rgb(255, 153, 204)")
-            self.radioButton_1.setStyleSheet("background-color: rgb(255, 153, 204)")
-            self.radioButton_2.setStyleSheet("background-color: rgb(255, 153, 204)")
-            self.radioButton_3.setStyleSheet("background-color: rgb(255, 153, 204)")
-            self.radioButton_4.setStyleSheet("background-color: rgb(255, 153, 204)")
         if self.sender() == self.radioButton_2:
             color = 2
-            self.setStyleSheet("QMainWindow { background-color: rgb(255, 159, 172) }")
-            self.start_but.setStyleSheet("background-color: rgb(255, 185, 135)")
-            self.radioButton_1.setStyleSheet("background-color: rgb(255, 185, 135)")
-            self.radioButton_2.setStyleSheet("background-color: rgb(255, 185, 135)")
-            self.radioButton_3.setStyleSheet("background-color: rgb(255, 185, 135)")
-            self.radioButton_4.setStyleSheet("background-color: rgb(255, 185, 135)")
+            self.color2 = (255, 185, 135)
+            self.setStyleSheet("QMainWindow { background-color: rgb(255, 159, 172)}")
         if self.sender() == self.radioButton_3:
             color = 3
-            self.setStyleSheet("QMainWindow { background-color: rgb(170, 200, 255) }")
-            self.start_but.setStyleSheet("background-color: rgb(170, 170, 255)")
-            self.radioButton_1.setStyleSheet("background-color: rgb(170, 170, 255)")
-            self.radioButton_2.setStyleSheet("background-color: rgb(170, 170, 255)")
-            self.radioButton_3.setStyleSheet("background-color: rgb(170, 170, 255)")
-            self.radioButton_4.setStyleSheet("background-color: rgb(170, 170, 255)")
+            self.color2 = (170, 170, 255)
+            self.setStyleSheet("QMainWindow { background-color: rgb(170, 200, 255)}")
         if self.sender() == self.radioButton_4:
             color = 4
+            self.color2 = (255, 198, 85)
             self.setStyleSheet("QMainWindow { background-color: rgb(255, 255, 153) }")
-            self.start_but.setStyleSheet("background-color: rgb(255, 198, 85)")
-            self.radioButton_1.setStyleSheet("background-color: rgb(255, 198, 85)")
-            self.radioButton_2.setStyleSheet("background-color: rgb(255, 198, 85)")
-            self.radioButton_3.setStyleSheet("background-color: rgb(255, 198, 85)")
-            self.radioButton_4.setStyleSheet("background-color: rgb(255, 198, 85)")
+        self.start_but.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.radioButton_1.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.radioButton_2.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.radioButton_3.setStyleSheet(f"background-color: rgb{self.color2}")
+        self.radioButton_4.setStyleSheet(f"background-color: rgb{self.color2}")
 
     def open_second_form(self):
         self.second_form = Notebook1()
@@ -129,6 +119,7 @@ class Notebook2(QMainWindow):
 class Notebook1(Notebook2):
     def __init__(self):
         super().__init__()
+        self.setFixedSize(730, 520)
         uic.loadUi("untitled.ui", self)
         self.bd_name = "noname.bd"
         self.setWindowTitle('Рандомайзер')
@@ -279,6 +270,13 @@ class Notebook1(Notebook2):
         if c == 2:
             pixmap3 = QPixmap('orel.png').scaled(191, 171, QtCore.Qt.KeepAspectRatio)
             self.coin.setPixmap(pixmap3)
+        msg = QMessageBox()
+        msg.setWindowTitle("Результат")
+        if c == 1:
+            msg.setText("Вам выпала Решка")
+        if c == 2:
+            msg.setText("Вам выпал Орёл")
+        x = msg.exec_()
 
     def make_choice(self):
         global elements
@@ -296,10 +294,10 @@ class Notebook1(Notebook2):
                 if count > len(elements):
                     raise LengError
                 elif count == 2:
-                    elem = random.choices(elements, k=2)
+                    elem = random.sample(elements, k=2)
                     self.choice.setText('  1)' + elem[0] + '\n  2)' + elem[-1])
                 elif count == 3:
-                    elem = random.choices(elements, k=3)
+                    elem = random.sample(elements, k=3)
                     self.choice.setText('  1)' + elem[0] + '\n  2)' + elem[1] + '\n  3)' + elem[-1])
             except EmptyError:
                 msg = QMessageBox()
@@ -526,6 +524,7 @@ class Notebook1(Notebook2):
         s = random.choice(alll)
         s1 = s
         self.label_3.setText('\t' + s1.lower())
+
 
 class Itog_tab(Notebook1):
     def __init__(self):
