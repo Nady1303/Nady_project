@@ -320,14 +320,11 @@ class Notebook1(Notebook2):
                 elements.append(elem)
             else:
                 raise NotSameError
-            print(elements)
         except NotSameError:
             msg = QMessageBox()
             msg.setWindowTitle("Ошибка")
             msg.setText(f"Элементы не должны повторяться")
             x = msg.exec_()
-        except Exception as e:
-            print(e)
 
     def delete(self):
         global elements
@@ -437,7 +434,6 @@ class Notebook1(Notebook2):
             n = random.randrange(1000, 9999)
         if ok_pressed and fun == "Сбросить текущую игру":
             n = 0
-        print(n)
 
     def run7(self):
         global k, write, n
@@ -446,7 +442,6 @@ class Notebook1(Notebook2):
         ans3 = str(self.spinBox_3.value())
         ans4 = str(self.spinBox_4.value())
         ans = int(ans1 + ans2 + ans3 + ans4)
-        print(n, ans)
         try:
             if n == 0:
                 raise Exception
@@ -461,19 +456,13 @@ class Notebook1(Notebook2):
             if correct:
                 msg = QMessageBox()
                 msg.setWindowTitle("Результат")
-                print("insert000")
                 msg.setText(f"Вы победили! Количество попыток: {k}")
                 x = msg.exec_()
-                try:
-                    print(0)
-                    con = sqlite3.connect("noname.bd")
-                    cur = con.cursor()
-                    cur.execute(f'''INSERT INTO itog(name, cout) VALUES("{name}", "{k}")''')
-                    print("insert")
-                    con.commit()
-                    con.close()
-                except Exception as e:
-                    print(e)
+                con = sqlite3.connect("noname.bd")
+                cur = con.cursor()
+                cur.execute(f'''INSERT INTO itog(name, cout) VALUES("{name}", "{k}")''')
+                con.commit()
+                con.close()
                 n = 0
                 k = 0
             else:
@@ -489,7 +478,6 @@ class Notebook1(Notebook2):
                     msg.setText(f"Попробуйте ещё раз! Загаданное число < вашего числа")
                     x = msg.exec_()
         except Exception as e:
-            print(e)
             msg = QMessageBox()
             msg.setWindowTitle("Результат")
             msg.setText(f"Ошибка! Возможно вы не начали игру")
